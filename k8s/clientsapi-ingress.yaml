@@ -2,17 +2,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: clientsapi-ingress
+  namespace: default
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   ingressClassName: nginx
-  tls:
-  - hosts:
-    - clients.api.deltacapita.com
-    secretName: clientsapi-tls
   rules:
-  - host: clients.api.deltacapita.com
+  - host: ""
     http:
       paths:
       - path: /
